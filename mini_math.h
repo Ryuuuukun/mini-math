@@ -32,6 +32,14 @@ struct complex {
         im = _re * other.im + _im * other.re;
         return *this;
     }
+
+    complex& operator/=(complex const& other) {
+        const double _re = re;
+        const double _im = im;
+        re = (_re * other.re + _im * other.im) / (other.re * other.re + other.im * other.im);
+        im = (_im * other.re - _re * other.im) / (other.re * other.re + other.im * other.im);
+        return *this;
+    }
 };
 
 inline std::ostream& operator<<(std::ostream& stream, complex const& c) {
