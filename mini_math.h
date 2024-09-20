@@ -35,8 +35,8 @@ struct complex {
     }
 
     complex& operator/=(complex const& other) {
-        const double _re = re;
-        const double _im = im;
+        const T _re = re;
+        const T _im = im;
         re = (_re * other.re + _im * other.im) / (other.re * other.re + other.im * other.im);
         im = (_im * other.re - _re * other.im) / (other.re * other.re + other.im * other.im);
         return *this;
