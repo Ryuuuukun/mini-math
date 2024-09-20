@@ -3,15 +3,16 @@
 #include <algorithm>
 #include <cmath>
 
+template<typename T = double>
 struct complex {
-    double re{ 0 };
-    double im{ 0 };
+    T re{ 0 };
+    T im{ 0 };
 
     complex() = default;
 
-    complex(const double re, const double im) : re(re), im(im) {}
+    complex(const T re, const T im) : re(re), im(im) {}
 
-    complex(const double re) : complex(re, 0) {}
+    complex(const T re) : complex(re, 0) {}
 
     complex& operator+=(complex const& other) {
         re += other.re;
@@ -42,7 +43,8 @@ struct complex {
     }
 };
 
-inline std::ostream& operator<<(std::ostream& stream, complex const& c) {
+template<typename T>
+inline std::ostream& operator<<(std::ostream& stream, complex<T> const& c) {
     return stream << "(" << c.re << ", " << c.im << ")";
 }
 
